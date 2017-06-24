@@ -14,11 +14,13 @@ app.get('/', function(request, response) {
 
 app.get('/socket-runing', function(request, response) {
   //response.send(cool());
+console.log("entro aqui...");
 socketIO.on('connection', function (socket) 
 {   
 	 socket.on('sendqr', function (data) 
      {
        console.log(data);
+       alert(data);
     });
 });
 
