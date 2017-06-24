@@ -1,21 +1,27 @@
 var cool = require('cool-ascii-faces');
 var express = require('express');
+var socketIO = require('socket.io');
 var app = express();
 
 app.set('port', (process.env.PORT || 5000));
-
 app.use(express.static(__dirname + '/public'));
-
 // views is directory for all template files
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
-
 app.get('/', function(request, response) {
   response.render('pages/index')
 });
 
-app.get('/cool', function(request, response) {
-  response.send(cool());
+app.get('/socket-runing', function(request, response) {
+  //response.send(cool());
+socketIO.on('connection', function (socket) 
+{   
+	 socket.on('sendqr', function (data) 
+     {
+       console.log(data);
+    });
+});
+
 });
 
 app.listen(app.get('port'), function() {
