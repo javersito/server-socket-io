@@ -12,7 +12,7 @@ app.get('/', function(request, response) {
   response.render('pages/index')
 });
 
-app.get('/socket-runing', function(request, response) {
+app.get('/cool', function(request, response) {
   //response.send(cool());
 console.log("entro aqui...");
 socketIO.on('connection', function (socket) 
